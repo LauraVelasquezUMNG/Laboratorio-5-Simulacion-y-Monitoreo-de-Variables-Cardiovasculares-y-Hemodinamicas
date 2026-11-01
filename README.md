@@ -23,7 +23,9 @@ En esta sección, el procedimiento permitió verificar el funcionamiento del sis
 
 El tiempo de respuesta se midió a partir del video de la práctica, partiendo del instante donde el monitor se estabiliza en los valores simulados por el OxSim hasta que se emite la alarma.
 
-### 1. Tabla de verificación de alarmas
+### **1. Verificación de alarmas**
+
+**Tabla 1.** Tabla de verificación de alarmas.
 
 | Escenario | Límite SpO₂ (bajo / alto) | Límite FP (bajo / alto) | Valor simulado (FC / SpO₂) | ¿Alarma activa? | Tiempo de respuesta (s) |
 |---|---|---|---|---|---|
@@ -32,9 +34,10 @@ El tiempo de respuesta se midió a partir del video de la práctica, partiendo d
 | Low Perfusion | 90 % / 97 % | 50 / 110 bpm | 80 bpm / 99 % | No* | 12 |
 | Taquicardia | 90 % / 97 % | 50 / 110 bpm | 140 bpm / 98 % | Sí | 10 |
 
-\*No estaba activa al cumplirse los 5 s de verificación indicados en la guía; se activó a los tiempos de respuesta indicados.
+> [!NOTE]
+> ***No** estaba activa al cumplirse los 5 s de verificación indicados en la guía; se activó a los tiempos de respuesta indicados.
 
-**Alarma esperada según los límites configurados:**
+**Tabla 2.** Alarma esperada según límites configurados.
 
 | Escenario | Condición que excede el límite | Alarma esperada |
 |---|---|---|
@@ -51,13 +54,15 @@ El tiempo de respuesta se midió a partir del video de la práctica, partiendo d
 
 **Taquicardia:** El monitor muestra FP = 140 bpm y SpO₂ = 99 %. La onda presenta muchos más ciclos en la misma ventana de tiempo, lo que refleja la frecuencia elevada. Los pulsos son casi sinusoidales: simétricos, de amplitud constante y sin la muesca dicrótica ni la asimetría del pulso real, lo que muestra que es una señal sintética generada por el simulador y no una onda fisiológica. La señal es muy regular y sin ruido.
 
-### 2. Tabla de errores de medición
+### 2. Errores de medición
 
 Se tomó el valor del simulador como referencia ($V_{sim}$) y el mostrado por el uMEC 100 como valor medido ($V_{monitor}$):
 
 $$E_{abs} = |V_{monitor} - V_{sim}|$$
 
 $$E_{porc}=\frac{E_{abs}}{V_{sim}}\times100$$
+
+**Tabla 3.** Tabla de errores de medición.
 
 | Escenario | Variable | V_sim | V_monitor | E_abs | E_% (%) |
 |---|---|---|---|---|---|
@@ -70,7 +75,9 @@ $$E_{porc}=\frac{E_{abs}}{V_{sim}}\times100$$
 | Taquicardia | SpO₂ (%) | 98 | 99 | 1 | 1,02 |
 | | FP (bpm) | 140 | 140 | 0 | 0,00 |
 
-### 3. Registro de la forma de onda PPG
+### **3. Formas de la onda PPG**
+
+**Tabla 4.** Registro de la forma de onda PPG.
 
 | Escenario | Imagen |
 |---|---|
@@ -89,7 +96,9 @@ En términos generales, en los cuatro escenarios **el monitor generó exactament
 ### 4. Respuestas a las preguntas de la guía
 
 **¿La onda fotopletismográfica se distorsiona en el modo Low Perfusion?**
+
 No se observa una distorsión evidente. Con SpO₂ = 99 % en modo Low Perfusion, el uMEC 100 mostró una onda periódica y regular, con pulsos equiespaciados, ascenso rápido y descenso lento, sin ruido ni deformaciones apreciables. Respecto a la onda del escenario 1, la amplitud se ve menor, aunque esta diferencia debe tomarse con cautela porque el monitor puede reescalar la onda automáticamente. El monitor mostró SpO₂ = 100 % y generó la alarma “SpO₂ alto > 97”, lo que indica que la señal fue suficiente para calcular la saturación.
 
 **Con SpO₂ = 98 % y 140 bpm, ¿se dispara la alarma de frecuencia cardíaca elevada?**
+
 Sí. Al simular 140 bpm con SpO₂ = 98 %, se activó la alarma de frecuencia cardíaca elevada (140 bpm superó el límite superior configurado) y se activó simultáneamente con la alarma de SpO₂ elevada (el valor de 98 % superó el límite superior de 97 %). En este escenario el monitor mostró FP = 140 bpm y SpO₂ = 99 %. La onda registrada presentó una mayor cantidad de ciclos en la misma ventana de tiempo, coherente con la frecuencia elevada.
