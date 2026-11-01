@@ -55,10 +55,9 @@ El tiempo de respuesta se midió a partir del video de la práctica, partiendo d
 
 Se tomó el valor del simulador como referencia ($V_{sim}$) y el mostrado por el uMEC 100 como valor medido ($V_{monitor}$):
 
-$$E_{abs} = \left| V_{monitor} - V_{sim} \right|$$
-$$E_{\%} = \frac{E_{abs}}{V_{sim}} \times 100$$
+$$E_{abs} = |V_{monitor} - V_{sim}|$$
 
-$E_{abs}$ se expresa en las mismas unidades de la variable (bpm para FP y % para SpO₂, es decir, puntos porcentuales) y $E_{\%}$ en %.
+$$E_{porc}=\frac{E_{abs}}{V_{sim}}\times100$$
 
 | Escenario | Variable | V_sim | V_monitor | E_abs | E_% (%) |
 |---|---|---|---|---|---|
