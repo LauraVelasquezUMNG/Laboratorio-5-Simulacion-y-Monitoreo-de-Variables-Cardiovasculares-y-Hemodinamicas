@@ -35,7 +35,7 @@ El tiempo de respuesta se midió a partir del video de la práctica, partiendo d
 | Taquicardia | 90 % / 97 % | 50 / 110 bpm | 140 bpm / 98 % | Sí | 10 |
 
 > [!NOTE]
-> ***No** estaba activa al cumplirse los 5 s de verificación indicados en la guía; se activó a los tiempos de respuesta indicados.
+> *No estaba activa al cumplirse los 5 s de verificación indicados en la guía; se activó a los tiempos de respuesta indicados.
 
 **Tabla 2.** Alarma esperada según límites configurados.
 
