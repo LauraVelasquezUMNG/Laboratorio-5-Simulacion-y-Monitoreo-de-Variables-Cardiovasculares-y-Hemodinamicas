@@ -81,9 +81,9 @@ $$E_{porc}=\frac{E_{abs}}{V_{sim}}\times100$$
 
 | Escenario | Imagen |
 |---|---|
-| Bradicardia (40 bpm, 95 %) | <img width="1290" height="869" alt="image" src="https://github.com/user-attachments/assets/3210dcd8-c5c5-4303-8943-7eebb847eebc" />|
-| Low Perfusion (SpO₂ = 99 %) | <img width="1011" height="694" alt="image" src="https://github.com/user-attachments/assets/ec00cbf0-d0a5-42c4-90a4-718a41eeeb6b" />|
-| Taquicardia (140 bpm, 98 %) | <img width="918" height="614" alt="image" src="https://github.com/user-attachments/assets/7ce8fbe1-fe16-4757-8c1d-1acc718ed731" />|
+| Bradicardia (40 bpm, 95 %) | <img width="500" alt="image" src="https://github.com/user-attachments/assets/3210dcd8-c5c5-4303-8943-7eebb847eebc" /> |
+| Low Perfusion (SpO₂ = 99 %) | <img width="500" alt="image" src="https://github.com/user-attachments/assets/ec00cbf0-d0a5-42c4-90a4-718a41eeeb6b" /> |
+| Taquicardia (140 bpm, 98 %) | <img width="500" alt="image" src="https://github.com/user-attachments/assets/7ce8fbe1-fe16-4757-8c1d-1acc718ed731" /> |
 
 **Bradicardia:** El uMEC 100 muestra FP = 40 bpm y SpO₂ = 96 %. La onda fotopletismográfica presenta pulsos muy espaciados entre sí (solo tres ciclos en la ventana visible), coherentes con la frecuencia baja simulada. Cada pulso tiene un ascenso rápido seguido de un descenso lento, que es la morfología típica de un pulso arterial. La amplitud es amplia y la señal es limpia, sin ruido ni deformaciones evidentes.
 
