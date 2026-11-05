@@ -15,6 +15,88 @@ Operar con el simulador Pronk OxSim (OX-1) y el monitor de signos vitales uMEC 1
 - Verificar los límites de medición de un monitor de signos vitales mediante simulación de variables hemodinámicas.
 - Interpretar variaciones en los parámetros hemodinámicos asociadas a estados fisiológicos y patológicos.
 
+> ### Parte A
+
+## Revisión bibliográfica
+
+Antes de la práctica se revisó la documentación técnica de ambos equipos: el manual de operación del monitor Mindray uMEC 100 [4] y su hoja de datos [3], y el manual de operación y la ficha técnica del simulador Pronk OxSim OX-1 [1], [2], [7]. A continuación se presenta una descripción general de cada equipo y luego se responden las preguntas de la guía.
+
+### Monitor de signos vitales Mindray uMEC 100
+
+El uMEC 100 es un monitor multiparamétrico para monitorizar, mostrar, almacenar, alarmar y transmitir parámetros fisiológicos de un paciente a la vez. Puede usarse en pacientes adultos, pediátricos y neonatales, y está pensado para áreas como cuidados intensivos, urgencias, quirófano y hospitalización [4]. En la configuración del uMEC 100 mide ECG (con análisis de arritmias, ST y QT), respiración por impedancia, temperatura, SpO₂, frecuencia de pulso y presión arterial no invasiva. La presión invasiva, el gasto cardíaco y el CO₂ solo están disponibles en los modelos superiores de la serie [4]. Su módulo de SpO₂ cumple la norma ISO 80601-2-61 y el de presión no invasiva la ISO 80601-2-30 [3].
+
+**Tabla 1.** Características técnicas principales del uMEC 100 [3], [4].
+
+| Característica | Especificación |
+|---|---|
+| Pantalla | Táctil a color de 10.1", 1024 × 600 píxeles |
+| Dimensiones / peso | 300 × 210 × 165 mm / 3.5 kg |
+| Parámetros | ECG, Resp, Temp, SpO₂, FP, PNI |
+| SpO₂ | Rango 0–100 %, resolución 1 %, exactitud ±2 % (70–100 %, adulto/pediátrico) |
+| Frecuencia de pulso (desde SpO₂) | Rango 20–300 bpm, exactitud ±3 bpm |
+| Entrada de datos | Pantalla táctil, perilla, teclas físicas y lector de código de barras |
+| Alarmas | Fisiológicas y técnicas, con tres prioridades (alta, media y baja) indicadas por lámpara y tono |
+
+### Simulador Pronk OxSim OX-1
+
+El OxSim OX-1 es un probador óptico de pulsioximetría en miniatura, de unos 6.4 × 6.4 × 3.2 cm y 5 oz de peso, sin contar la parte donde se inserta el sensor [2], [8]. A diferencia de los simuladores que se conectan eléctricamente al monitor, el OX-1 se coloca dentro de la pinza de SpO₂, así que verifica el sistema completo: sensor, cable de extensión y monitor [2]. Funciona con cinco modos predefinidos que combinan valores de SpO₂, frecuencia de pulso e índice de perfusión. Es compatible con sensores de distintos fabricantes (por ejemplo, Masimo y Nellcor) y detecta automáticamente el tipo de sensor conectado [7]. Por su tamaño y facilidad de uso, se emplea en verificaciones funcionales rápidas de alarmas y mediciones, tanto en mantenimiento preventivo como antes del uso clínico.
+
+### **1. ¿Cómo colocar al uMEC 100 en modo "monitor"?**
+
+Según el manual de operación [4], el uMEC 100 tiene varios modos de funcionamiento: monitorización, privacidad, nocturno y espera (*standby*). El modo de monitorización (*Monitoring Mode*) es el modo clínico normal y **el equipo entra en él automáticamente al encenderse**. El procedimiento es el siguiente:
+
+1. **Inspección previa:** verificar que el monitor no tenga daños mecánicos y que los cables y accesorios estén bien conectados. Conectar el cable de alimentación a la toma de AC y comprobar que el indicador de AC encienda en verde [4].
+2. **Encendido:** presionar el interruptor de encendido, ubicado en el costado derecho del equipo. Al encender, las alarmas quedan en pausa durante **2 minutos** y luego se activa el sistema de alarmas [4].
+3. **Si el equipo está en espera (*standby*):** en este modo se detienen todas las mediciones y se desactivan las alarmas, excepto la de batería baja. Para volver a monitorizar se selecciona **Resume monitor** (reanudar el paciente actual) o **Monitor** (admitir un paciente nuevo). Al salir de *standby* las alarmas también quedan en pausa durante 2 minutos [4].
+4. **Iniciar la monitorización:** admitir al paciente, revisar la categoría (adulto, pediátrico o neonato) y los límites de alarma, y conectar el sensor de la medición deseada; en esta práctica, la pinza de SpO₂ en el conector del costado izquierdo [4].
+
+> [!NOTE]
+> En el uMEC 100, "Monitor" también es el nombre de uno de los modos de filtro del ECG (ancho de banda de 0.5 a 40 Hz) [3]. Ese ajuste solo afecta al canal de ECG y no interviene en esta práctica, que usa únicamente SpO₂ y frecuencia de pulso.
+
+### **2. ¿Qué parámetros o variables fisiológicas pueden simularse con el Pronk OxSim OX-1?**
+
+El OxSim OX-1 es un simulador **óptico** de SpO₂: el sensor del monitor se coloca sobre el simulador, por lo que la prueba incluye el sensor, el cable de extensión y el monitor [2], [7]. No simula ECG, presión arterial ni respiración. Las variables que entrega son tres:
+
+**Tabla 2.** Modos predefinidos del Pronk OxSim OX-1 [2].
+
+| Modo | SpO₂ (%) | Frecuencia de pulso (bpm) | Índice de perfusión | Condición representada |
+|---|---|---|---|---|
+| 1 | 85 | 80 | ≈ 2.0 | Hipoxia |
+| 2 | 95 | 40 | ≈ 2.0 | Bradicardia |
+| 3 | 98 | 80 | ≈ 2.0 | Normal |
+| 4 | 98 | 140 | ≈ 2.0 | Taquicardia |
+| 5 | 99 | 80 | ≈ 0.2 | Baja perfusión (*Low Perfusion*) |
+
+- **Saturación periférica de oxígeno (SpO₂):** porcentaje de hemoglobina oxigenada respecto a la hemoglobina funcional total. El pulsioxímetro la calcula a partir de la absorción de luz roja e infrarroja en el tejido. El simulador reproduce esa relación de absorción, de modo que el monitor calcula la saturación del modo elegido: 85, 95, 98 o 99 % [2].
+- **Frecuencia de pulso (FP):** número de pulsaciones arteriales por minuto, obtenido de la componente pulsátil de la señal fotopletismográfica. El simulador repite esa componente a 40, 80 o 140 bpm, lo que permite recrear bradicardia, ritmo normal y taquicardia [2]. Es una frecuencia de pulso periférica, no una frecuencia cardíaca derivada del ECG.
+- **Índice de perfusión (PI):** relación entre la componente pulsátil (AC) y la componente no pulsátil (DC) de la señal óptica. Indica qué tan fuerte es la señal de pulso en el sitio de medición. El simulador usa ≈ 2.0 en los modos 1 a 4 y ≈ 0.2 en el modo 5, que reproduce una señal débil para comprobar si el monitor sigue midiendo con baja perfusión [1], [2].
+
+Además, el OxSim detecta automáticamente el fabricante del sensor de SpO₂ conectado, por lo que no hay que configurarlo según la marca del monitor [7].
+
+> [!NOTE]
+> El OX-1 solo trabaja con estos cinco modos fijos. Su sucesor, el OxSim Flex (OX-2), permite ajustar la SpO₂, la frecuencia de pulso y el índice de perfusión en pasos de una unidad.
+
+### **3. Tolerancias o errores máximos permitidos (EMP) en el ámbito clínico**
+
+La norma de referencia para pulsioxímetros es la **ISO 80601-2-61** [5], que el uMEC 100 declara cumplir [3]. La exactitud de SpO₂ se expresa como $A_{rms}$, el error cuadrático medio entre la SpO₂ del equipo y la saturación arterial (SaO₂) medida con co-oxímetro en voluntarios sometidos a hipoxia controlada:
+
+$$A_{rms}=\sqrt{\frac{\sum_{i=1}^{n}\left(SpO_{2,i}-SaO_{2,i}\right)^2}{n}}$$
+
+**Tabla 3.** Tolerancias o errores máximos permitidos por parámetro.
+
+| Parámetro | Norma ISO 80601-2-61 [5] | Guía FDA [6] | Especificación del uMEC 100 [3] |
+|---|---|---|---|
+| SpO₂ | $A_{rms}$ ≤ 4 % entre 70 % y 100 % | $A_{rms}$ ≤ 3 % (sensores de transmisión) y ≤ 3.5 % (reflectancia), entre 70 % y 100 % | ±2 % (70–100 %, adulto/pediátrico); ±3 % (70–100 %, neonato); no especificada entre 0 y 69 % |
+| Frecuencia de pulso | El fabricante debe declarar su exactitud como $A_{rms}$ en el rango declarado | ±3 bpm ($A_{rms}$) | ±3 bpm; rango de 20 a 300 bpm |
+| Índice de perfusión | Sin EMP establecido | Sin EMP establecido | Se presenta como indicador relativo de la señal |
+
+- **SpO₂:** la norma permite hasta 4 puntos de $A_{rms}$ en el rango de 70 % a 100 %. Por debajo de 70 % la exactitud no está especificada, y por eso la mayoría de los fabricantes, incluido Mindray, no garantizan valores en ese rango [3], [5]. El uMEC 100 declara una exactitud más estricta que la exigida por la norma.
+- **Frecuencia de pulso:** la norma no fija un valor único, sino que exige al fabricante declararlo y demostrarlo [5]. En la práctica, el valor habitual en pulsioxímetros clínicos es ±3 bpm, que es también el que declara el uMEC 100 [3], [6].
+- **Índice de perfusión:** no tiene un error máximo regulado. Es un valor relativo que depende del sensor y del sitio de medición, y se usa para juzgar la calidad de la señal más que como medición diagnóstica. Por eso el simulador lo indica solo como valor aproximado (≈ 2.0 y ≈ 0.2) [2].
+
+> [!NOTE]
+> El $A_{rms}$ es una medida estadística que se obtiene con muchas mediciones en voluntarios, por lo que no puede calcularse con un solo registro por escenario. En la verificación con simulador (Partes B y C) se comparó cada error absoluto contra la exactitud declarada por el fabricante, que es el criterio aplicable a una prueba funcional.
+
 > ### Parte B
 
 ## Verificación de alarmas y errores de medición
@@ -25,9 +107,9 @@ El tiempo de respuesta se midió a partir del video de la práctica, partiendo d
 
 ### **1. Verificación de alarmas**
 
-**Tabla 1.** Tabla de verificación de alarmas.
+**Tabla 4.** Tabla de verificación de alarmas.
 
-| Escenario | Límite SpO₂ (bajo / alto) | Límite FP (bajo / alto) | Valor simulado (FC / SpO₂) | ¿Alarma activa? | Tiempo de respuesta (s) |
+| Escenario | Límite SpO₂ (bajo / alto) | Límite FP (bajo / alto) | Valor simulado (FP / SpO₂) | ¿Alarma activa? | Tiempo de respuesta (s) |
 |---|---|---|---|---|---|
 | Bradicardia | 90 % / 100 % | 50 / 110 bpm | 40 bpm / 95 % | Sí | 12 |
 | Hipoxia | 90 % / 100 % | 50 / 110 bpm | 80 bpm / 85 % | No* | 8 |
@@ -37,7 +119,7 @@ El tiempo de respuesta se midió a partir del video de la práctica, partiendo d
 > [!NOTE]
 > *No estaba activa al cumplirse los 5 s de verificación indicados en la guía; se activó a los tiempos de respuesta indicados.
 
-**Tabla 2.** Alarma esperada según límites configurados.
+**Tabla 5.** Alarma esperada según límites configurados.
 
 | Escenario | Condición que excede el límite | Alarma esperada |
 |---|---|---|
@@ -52,7 +134,9 @@ El tiempo de respuesta se midió a partir del video de la práctica, partiendo d
 
 **Low Perfusion:** La SpO₂ simulada de 99 % superó el límite superior de 97 %, por lo que se esperaba la alarma de SpO₂ alta, que efectivamente se activó. La FP de 80 bpm se mantuvo dentro de los límites.
 
-**Taquicardia:** El monitor muestra FP = 140 bpm y SpO₂ = 99 %. La onda presenta muchos más ciclos en la misma ventana de tiempo, lo que refleja la frecuencia elevada. Los pulsos son casi sinusoidales: simétricos, de amplitud constante y sin la muesca dicrótica ni la asimetría del pulso real, lo que muestra que es una señal sintética generada por el simulador y no una onda fisiológica. La señal es muy regular y sin ruido.
+**Taquicardia:** La FP simulada de 140 bpm superó el límite superior de 110 bpm y la SpO₂ de 98 % superó el límite superior de 97 %, por lo que se esperaban las alarmas de FP alta y SpO₂ alta. Ambas se activaron simultáneamente.
+
+En términos generales, en los cuatro escenarios **el monitor generó exactamente las alarmas correspondientes a los límites superados**, sin alarmas adicionales ni omitidas.
 
 ### 2. Errores de medición
 
@@ -62,22 +146,22 @@ $$E_{abs} = |V_{monitor} - V_{sim}|$$
 
 $$E_{porc}=\frac{E_{abs}}{V_{sim}}\times100$$
 
-**Tabla 3.** Tabla de errores de medición.
+**Tabla 6.** Tabla de errores de medición.
 
 | Escenario | Variable | V_sim | V_monitor | E_abs | E_% (%) |
 |---|---|---|---|---|---|
-| Bradicardia | SpO₂ (%) | 95 | 96 | 1 | 1,05 |
-| | FP (bpm) | 40 | 40 | 0 | 0,00 |
-| Hipoxia | SpO₂ (%) | 85 | 85 | 0 | 0,00 |
-| | FP (bpm) | 80 | 80 | 0 | 0,00 |
-| Low Perfusion | SpO₂ (%) | 99 | 100 | 1 | 1,01 |
-| | FP (bpm) | 80 | 80 | 0 | 0,00 |
-| Taquicardia | SpO₂ (%) | 98 | 99 | 1 | 1,02 |
-| | FP (bpm) | 140 | 140 | 0 | 0,00 |
+| Bradicardia | SpO₂ (%) | 95 | 96 | 1 | 1.05 |
+| | FP (bpm) | 40 | 40 | 0 | 0.00 |
+| Hipoxia | SpO₂ (%) | 85 | 85 | 0 | 0.00 |
+| | FP (bpm) | 80 | 80 | 0 | 0.00 |
+| Low Perfusion | SpO₂ (%) | 99 | 100 | 1 | 1.01 |
+| | FP (bpm) | 80 | 80 | 0 | 0.00 |
+| Taquicardia | SpO₂ (%) | 98 | 99 | 1 | 1.02 |
+| | FP (bpm) | 140 | 140 | 0 | 0.00 |
 
 ### **3. Formas de la onda PPG**
 
-**Tabla 4.** Registro de la forma de onda PPG.
+**Tabla 7.** Registro de la forma de onda PPG.
 
 | Escenario | Imagen |
 |---|---|
@@ -87,17 +171,15 @@ $$E_{porc}=\frac{E_{abs}}{V_{sim}}\times100$$
 
 **Bradicardia:** El uMEC 100 muestra FP = 40 bpm y SpO₂ = 96 %. La onda fotopletismográfica presenta pulsos muy espaciados entre sí (solo tres ciclos en la ventana visible), coherentes con la frecuencia baja simulada. Cada pulso tiene un ascenso rápido seguido de un descenso lento, que es la morfología típica de un pulso arterial. La amplitud es amplia y la señal es limpia, sin ruido ni deformaciones evidentes.
 
-**Low Perfusion:** El monitor muestra FP = 80 bpm y SpO₂ = 100 %. Se observan siete pulsos regulares y equiespaciados, con la misma forma de ascenso rápido y descenso lento, y en algunos se insinúa una pequeña inflexión después del pico. La señal se mantiene periódica y sin ruido apreciable; no se observa una distorsión evidente de la onda. La amplitud se ve menor que en el escenario 1, aunque esa comparación debe tomarse con cautela porque el monitor puede reescalar automáticamente la onda.
+**Low Perfusion:** El monitor muestra FP = 80 bpm y SpO₂ = 100 %. Se observan siete pulsos regulares y equiespaciados, con la misma forma de ascenso rápido y descenso lento, y en algunos se insinúa una pequeña inflexión después del pico. La señal se mantiene periódica y sin ruido apreciable; no se observa una distorsión evidente de la onda. La amplitud se ve menor que en el escenario de bradicardia, aunque esa comparación debe tomarse con cautela porque el monitor puede reescalar automáticamente la onda.
 
-**Taquicardia:** La FP simulada de 140 bpm superó el límite superior de 110 bpm y la SpO₂ de 98 % superó el límite superior de 97 %, por lo que se esperaban las alarmas de FP alta y SpO₂ alta. Ambas se activaron simultáneamente.
-
-En términos generales, en los cuatro escenarios **el monitor generó exactamente las alarmas correspondientes a los límites superados**, sin alarmas adicionales ni omitidas.
+**Taquicardia:** El monitor muestra FP = 140 bpm y SpO₂ = 99 %. La onda presenta muchos más ciclos en la misma ventana de tiempo, lo que refleja la frecuencia elevada. Los pulsos son casi sinusoidales: simétricos, de amplitud constante y sin la muesca dicrótica ni la asimetría del pulso real, lo que muestra que es una señal sintética generada por el simulador y no una onda fisiológica. La señal es muy regular y sin ruido.
 
 ### 4. Respuestas a las preguntas de la guía
 
 **¿La onda fotopletismográfica se distorsiona en el modo Low Perfusion?**
 
-No se observa una distorsión evidente. Con SpO₂ = 99 % en modo Low Perfusion, el uMEC 100 mostró una onda periódica y regular, con pulsos equiespaciados, ascenso rápido y descenso lento, sin ruido ni deformaciones apreciables. Respecto a la onda del escenario 1, la amplitud se ve menor, aunque esta diferencia debe tomarse con cautela porque el monitor puede reescalar la onda automáticamente. El monitor mostró SpO₂ = 100 % y generó la alarma “SpO₂ alto > 97”, lo que indica que la señal fue suficiente para calcular la saturación.
+No se observa una distorsión evidente. Con SpO₂ = 99 % en modo Low Perfusion, el uMEC 100 mostró una onda periódica y regular, con pulsos equiespaciados, ascenso rápido y descenso lento, sin ruido ni deformaciones apreciables. Respecto a la onda del escenario de bradicardia, la amplitud se ve menor, aunque esta diferencia debe tomarse con cautela porque el monitor puede reescalar la onda automáticamente. El monitor mostró SpO₂ = 100 % y generó la alarma “SpO₂ alto > 97”, lo que indica que la señal fue suficiente para calcular la saturación.
 
 **Con SpO₂ = 98 % y 140 bpm, ¿se dispara la alarma de frecuencia cardíaca elevada?**
 
@@ -168,3 +250,13 @@ La detección oportuna de variaciones peligrosas de la frecuencia de pulso y de 
 [2] MedWrench, "Pronk Technologies - OX-1 OxSim," [En línea]. Disponible en: https://www.medwrench.com/equipment/3862/pronk-technologies-ox-1-oxsim.
 
 [3] Shenzhen Mindray Bio-Medical Electronics Co., Ltd., "uMEC 100/120/150 Patient Monitor Data Sheet," [En línea]. Disponible en: https://storage.mtender.gov.md/get/02d98f27-11fb-4591-ae5f-e054acfdda95-1778679439594 y https://storage.mtender.gov.md/get/2bd79673-4f1f-48f0-b1d1-44fb22629788-1773411341584.
+
+[4] Shenzhen Mindray Bio-Medical Electronics Co., Ltd., "uMEC 60/uMEC 70/uMEC 80/uMEC 100/uMEC 120/uMEC 150 Patient Monitor Operator's Manual," rev. 2.0, 2023. [En línea]. Disponible en: https://storage.mtender.gov.md/get/e4fcb778-7f7a-4208-b3f4-ba0208f27fa1-1780383669651.
+
+[5] *Medical electrical equipment — Part 2-61: Particular requirements for basic safety and essential performance of pulse oximeter equipment*, ISO 80601-2-61:2017, International Organization for Standardization, Ginebra, Suiza, 2017.
+
+[6] U.S. Food and Drug Administration, "Pulse Oximeters – Premarket Notification Submissions [510(k)s]: Guidance for Industry and Food and Drug Administration Staff," 2013.
+
+[7] Medical IT, "OX-Sim – Metrología Biomédica," [En línea]. Disponible en: https://www.medicalitech.com/producto/ox-sim/.
+
+[8] MedicalExpo, "Heart rate simulator OX-1 OxSim®," [En línea]. Disponible en: https://medicalexpo.com/prod/proact-medical/product-69747-1097964.html.
